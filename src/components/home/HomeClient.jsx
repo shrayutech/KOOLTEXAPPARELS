@@ -47,8 +47,8 @@ const HomeClient = () => {
             >
               <h3 className="text-primary font-black uppercase tracking-[0.4em] text-xs mb-6 px-4 py-1.5 bg-primary/10 inline-block rounded-full">Expert Manufacturing</h3>
               <h2 className="text-4xl md:text-6xl font-black mb-8 leading-[1.1] text-dark heading-dual">
-                Industrial Heritage, <br />
-                <span>Modern Delivery.</span>
+                Premium Apparel <br />
+                <span>Manufacturing.</span>
               </h2>
               <p className="text-body text-xl mb-8 leading-relaxed font-medium">
                 KOOLTEX APPARELS is a premier garment manufacturer specializing in large-scale production for corporate, educational, and industrial sectors across India.
@@ -70,7 +70,7 @@ const HomeClient = () => {
               <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative border-8 border-white">
                 <Image 
                   src="/images/manufacturing.png" 
-                  alt="Kooltex Apparels Manufacturing" 
+                  alt="Kooltex Apparels Manufacturing Facility in India" 
                   fill
                   className="object-cover"
                 />

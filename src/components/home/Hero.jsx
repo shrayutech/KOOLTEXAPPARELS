@@ -149,7 +149,7 @@ const Hero = () => {
                 className="absolute -bottom-6 -left-6 bg-dark text-white p-6 rounded-3xl shadow-2xl z-20 border border-white/10"
               >
                 <div className="text-3xl font-black text-primary leading-none">
-                  14+
+                  15+
                 </div>
                 <div className="text-[10px] font-bold uppercase tracking-widest mt-1 text-white/60">
                   Years of Legacy

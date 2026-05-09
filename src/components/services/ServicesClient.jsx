@@ -135,7 +135,7 @@ const ServicesClient = () => {
         </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter">Industries We Empower</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter">Bulk Uniform Manufacturing Solutions</h2>
             <p className="text-white/80 text-xl font-medium max-w-2xl mx-auto">
               Specialized apparel solutions tailored for mission-critical industrial and institutional sectors.
             </p>
@@ -162,7 +162,7 @@ const ServicesClient = () => {
       {/* Workflow Section */}
       <section className="section-padding bg-light">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-12 tracking-tighter">Enterprise Project Workflow</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-12 tracking-tighter">Enterprise Apparel Production Workflow</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {[
               { step: "01", title: "Strategic Brief", desc: "Understanding scale and technical requirements." },

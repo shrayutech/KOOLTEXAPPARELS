@@ -2,8 +2,8 @@ import HomeClient from "@/components/home/HomeClient";
 
 export const metadata = {
   title: "Best T-Shirt & Uniform Manufacturer in India | KOOLTEX APPARELS",
-  description: "KOOLTEX APPARELS is a leading manufacturer and supplier of T-Shirts, Track Suits, School Uniforms, Corporate Uniforms, Safety Jackets & Aprons across India.",
-  keywords: "T-Shirt Manufacturer, School Uniform Manufacturer, Corporate Uniform Supplier, Safety Jacket Manufacturer, Apron Manufacturer India, Uniform Manufacturer in India, Maharashtra, Chhatrapati Sambhajinagar",
+  description: "KOOLTEX APPARELS is India's leading manufacturer of premium T-Shirts, School Uniforms, Corporate Wear, and Safety Jackets. Quality bulk supplier based in Maharashtra.",
+  keywords: "Best T-Shirt Manufacturer in India, School Uniform Manufacturer, Corporate Uniform Supplier, Track Suit Manufacturer, Safety Jacket Manufacturer India, Apron Manufacturer, Industrial Uniform Supplier, Bulk Uniform Manufacturer Maharashtra, Uniform Manufacturer in Chhatrapati Sambhajinagar",
   alternates: {
     canonical: "/",
   },

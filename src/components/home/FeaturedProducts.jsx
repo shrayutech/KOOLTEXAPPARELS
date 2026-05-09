@@ -61,7 +61,7 @@ const FeaturedProducts = () => {
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image 
                   src={item.image} 
-                  alt={item.title} 
+                  alt={`${item.title} Manufacturer India - Kooltex`} 
                   fill 
                   className="object-cover group-hover:scale-110 transition-transform duration-700" 
                 />

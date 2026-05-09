@@ -85,7 +85,7 @@ const AboutClient = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold mb-10 text-secondary leading-tight">Leading the Future of <span className="text-primary">Manufacturing.</span></h2>
+              <h2 className="text-4xl md:text-6xl font-bold mb-10 text-secondary leading-tight">Leading the Future of <span className="text-primary">Apparel Manufacturing.</span></h2>
               <p className="text-slate/80 text-xl mb-8 leading-relaxed font-medium">
                 Kooltex Apparels was founded with a singular vision: to bridge the gap between traditional craftsmanship and modern industrial efficiency.
               </p>
@@ -112,7 +112,7 @@ const AboutClient = () => {
               viewport={{ once: true }}
               className="relative rounded-[3rem] overflow-hidden shadow-2xl aspect-square"
             >
-              <Image src="https://images.unsplash.com/photo-1558444479-c8f010524776?q=80&w=1000" alt="About Kooltex" fill className="object-cover" />
+              <Image src="https://images.unsplash.com/photo-1558444479-c8f010524776?q=80&w=1000" alt="Kooltex Apparels Manufacturing Facility in Maharashtra India" fill className="object-cover" />
               <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
             </motion.div>
           </div>

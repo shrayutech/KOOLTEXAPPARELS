@@ -20,31 +20,51 @@ const manrope = Manrope({
 export const metadata = {
   metadataBase: new URL("https://kooltexapparels.com"),
   title: {
-    default: "KOOLTEX APPARELS | Premium Uniform & Apparel Manufacturer in India",
+    default: "Best T-Shirt & Uniform Manufacturer in India | KOOLTEX APPARELS",
     template: "%s | KOOLTEX APPARELS",
   },
-  description: "KOOLTEX APPARELS is a leading manufacturer of premium T-shirts, school uniforms, corporate wear, and industrial safety jackets in India. Quality guaranteed bulk supplier.",
-  keywords: ["T-Shirt Manufacturer India", "School Uniform Manufacturer", "Corporate Uniform Supplier", "Safety Jacket Manufacturer", "Bulk Apparel India", "Uniform Supplier Maharashtra"],
+  description: "KOOLTEX APPARELS is India's premium manufacturer and supplier of T-Shirts, Track Suits, School Uniforms, Corporate Wear, Safety Jackets & Aprons. High-quality bulk manufacturing with nationwide delivery.",
+  keywords: [
+    "Best T-Shirt Manufacturer in India",
+    "School Uniform Manufacturer",
+    "Corporate Uniform Supplier",
+    "Track Suit Manufacturer India",
+    "Safety Jacket Manufacturer",
+    "Apron Manufacturer",
+    "Uniform Manufacturer in Maharashtra",
+    "Industrial Uniform Supplier",
+    "Bulk Uniform Manufacturer India",
+    "Custom Apparel Manufacturing India",
+    "Uniform Supplier Aurangabad",
+    "Chhatrapati Sambhajinagar Apparel Factory"
+  ],
   authors: [{ name: "KOOLTEX APPARELS" }],
   creator: "KOOLTEX APPARELS",
   publisher: "KOOLTEX APPARELS",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  alternates: {
+    canonical: "/",
   },
   openGraph: {
-    title: "KOOLTEX APPARELS | Premium Uniform Manufacturer",
-    description: "Leading manufacturer of high-quality uniforms and custom apparel in India.",
+    title: "Best T-Shirt & Uniform Manufacturer in India | KOOLTEX APPARELS",
+    description: "Leading manufacturer of high-quality uniforms and custom apparel in India. Expert bulk production for schools, corporates, and industries.",
     url: "https://kooltexapparels.com",
     siteName: "KOOLTEX APPARELS",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "KOOLTEX APPARELS Manufacturing Facility",
+      },
+    ],
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KOOLTEX APPARELS | Premium Uniform Manufacturer",
-    description: "High-quality uniforms and custom apparel for businesses and schools.",
+    title: "KOOLTEX APPARELS | Premium Uniform & Apparel Manufacturer",
+    description: "High-quality bulk apparel manufacturing for schools and industries across India.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -52,10 +72,13 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "your-google-verification-code",
   },
 };
 
@@ -115,11 +138,44 @@ export default function RootLayout({ children }) {
     }
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "KOOLTEX APPARELS",
+    "url": "https://kooltexapparels.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kooltexapparels.com/explore?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://kooltexapparels.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://kooltexapparels.com/about"
+      }
+    ]
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={localBusinessSchema} />
+        <JsonLd data={websiteSchema} />
+        <JsonLd data={breadcrumbSchema} />
       </head>
       <body className="antialiased">
         <div className="flex flex-col min-h-screen">

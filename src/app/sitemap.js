@@ -7,10 +7,11 @@ export default function sitemap() {
     '/about',
     '/services',
     '/contact',
+    '/blog',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'weekly',
+    changeFrequency: route === '/blog' ? 'daily' : 'weekly',
     priority: route === '' ? 1 : 0.8,
   }));
 
