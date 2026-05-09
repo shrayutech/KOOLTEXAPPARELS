@@ -1,8 +1,8 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 const Hero = () => {
   const containerVariants = {
@@ -18,7 +18,11 @@ const Hero = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   return (
@@ -28,12 +32,17 @@ const Hero = () => {
       <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       {/* Micro-pattern Overlay */}
-      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
-        style={{ backgroundImage: 'radial-gradient(circle, #000 1.5px, transparent 1.5px)', backgroundSize: '40px 40px' }}></div>
+      <div
+        className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #000 1.5px, transparent 1.5px)",
+          backgroundSize: "40px 40px",
+        }}
+      ></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
           {/* --- Text Content Column --- */}
           <motion.div
             className="lg:col-span-8 max-w-4xl"
@@ -42,7 +51,10 @@ const Hero = () => {
             animate="visible"
           >
             {/* Badge Indicator */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center gap-4 mb-8"
+            >
               <span className="text-primary font-black uppercase tracking-[0.5em] text-[10px] px-5 py-2 bg-primary/10 rounded-full shadow-sm">
                 ESTD 2010
               </span>
@@ -69,18 +81,34 @@ const Hero = () => {
             </div>
 
             {/* Sub-text Description */}
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl text-body mb-14 max-w-2xl leading-relaxed font-medium">
-              India's trusted bulk manufacturer specializing in precision-engineered T-Shirts,
-              School Uniforms, and Corporate Apparel with scalable excellence.
+            <motion.p
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-body mb-14 max-w-2xl leading-relaxed font-medium"
+            >
+              India's trusted bulk manufacturer specializing in
+              precision-engineered T-Shirts, School Uniforms, and Corporate
+              Apparel with scalable excellence.
             </motion.p>
 
             {/* Action Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-6">
-              <Link href="/explore" className="btn-primary group py-5 px-14 text-lg shadow-2xl shadow-primary/30 flex items-center gap-3">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-6"
+            >
+              <Link
+                href="/explore"
+                className="btn-primary group py-5 px-14 text-lg shadow-2xl shadow-primary/30 flex items-center gap-3"
+              >
                 Explore Products
-                <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <ChevronRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </Link>
-              <Link href="/contact" className="btn-outline border-dark/10 text-dark hover:bg-dark hover:text-white py-5 px-14 text-lg backdrop-blur-sm transition-all">
+              <Link
+                href="/contact"
+                className="btn-outline border-dark/10 text-dark hover:bg-dark hover:text-white py-5 px-14 text-lg backdrop-blur-sm transition-all"
+              >
                 Get a Quote
               </Link>
             </motion.div>
@@ -102,23 +130,34 @@ const Hero = () => {
               <div className="relative h-full w-full bg-white rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] overflow-hidden border-8 border-white group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
                 <div className="w-full h-full flex flex-col items-center justify-center p-12 text-center">
-                  <span className="text-primary/10 font-black text-[12rem] select-none leading-none">K</span>
-                  <p className="text-dark/20 font-black uppercase tracking-[0.5em] text-xs mt-4">Kooltex Heritage</p>
+                  <span className="text-primary/10 font-black text-[12rem] select-none leading-none">
+                    K
+                  </span>
+                  <p className="text-dark/20 font-black uppercase tracking-[0.5em] text-xs mt-4">
+                    Kooltex Heritage
+                  </p>
                 </div>
               </div>
 
               {/* Floating "Experience" Badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="absolute -bottom-6 -left-6 bg-dark text-white p-6 rounded-3xl shadow-2xl z-20 border border-white/10"
               >
-                <div className="text-3xl font-black text-primary leading-none">14+</div>
-                <div className="text-[10px] font-bold uppercase tracking-widest mt-1 text-white/60">Years of Legacy</div>
+                <div className="text-3xl font-black text-primary leading-none">
+                  14+
+                </div>
+                <div className="text-[10px] font-bold uppercase tracking-widest mt-1 text-white/60">
+                  Years of Legacy
+                </div>
               </motion.div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>
