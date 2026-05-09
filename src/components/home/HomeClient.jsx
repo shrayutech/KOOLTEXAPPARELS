@@ -9,6 +9,7 @@ import QualitySection from '../../components/home/QualitySection.jsx';
 import TestimonialsSection from '../../components/home/TestimonialsSection.jsx';
 import QuoteForm from '../../components/home/QuoteForm.jsx';
 import FAQAccordion from '../../components/home/FAQAccordion.jsx';
+import SEOContent from '../../components/home/SEOContent.jsx';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -94,6 +95,8 @@ const HomeClient = () => {
       <ProcessSection />
 
       <QualitySection />
+      
+      <SEOContent />
 
       <TestimonialsSection />
 

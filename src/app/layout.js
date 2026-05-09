@@ -23,7 +23,7 @@ export const metadata = {
     default: "Best T-Shirt & Uniform Manufacturer in India | KOOLTEX APPARELS",
     template: "%s | KOOLTEX APPARELS",
   },
-  description: "KOOLTEX APPARELS is India's premium manufacturer and supplier of T-Shirts, Track Suits, School Uniforms, Corporate Wear, Safety Jackets & Aprons. High-quality bulk manufacturing with nationwide delivery.",
+  description: "KOOLTEX APPARELS is India's premium manufacturer and supplier of T-Shirts, Track Suits, School Uniforms, Corporate Wear, Safety Jackets & Aprons. ISO 9001:2015 & OEKO-TEX Standard 100 certified bulk manufacturing.",
   keywords: [
     "Best T-Shirt Manufacturer in India",
     "School Uniform Manufacturer",
@@ -36,7 +36,9 @@ export const metadata = {
     "Bulk Uniform Manufacturer India",
     "Custom Apparel Manufacturing India",
     "Uniform Supplier Aurangabad",
-    "Chhatrapati Sambhajinagar Apparel Factory"
+    "ISO Certified Uniform Manufacturer",
+    "OEKO-TEX Uniform Supplier",
+    "Bidkin Apparel Factory"
   ],
   authors: [{ name: "KOOLTEX APPARELS" }],
   creator: "KOOLTEX APPARELS",

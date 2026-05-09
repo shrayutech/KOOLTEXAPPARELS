@@ -8,6 +8,8 @@ export default function sitemap() {
     '/services',
     '/contact',
     '/blog',
+    '/locations/maharashtra',
+    '/locations/bidkin',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

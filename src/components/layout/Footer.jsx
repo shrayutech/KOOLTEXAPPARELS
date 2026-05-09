@@ -79,22 +79,43 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-12">Manufacturing Units</h3>
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-12">Manufacturing Hubs</h3>
             <ul className="space-y-6">
               {[
-                'Corporate Apparel', 
-                'Educational Uniforms', 
-                'Industrial Safety Wear', 
-                'Promotional T-Shirts', 
-                'Performance Tracksuits', 
-                'Technical Aprons'
-              ].map((item) => (
-                <li key={item}>
+                { name: 'Maharashtra Unit', path: '/locations/maharashtra' },
+                { name: 'Bidkin Factory', path: '/locations/bidkin' },
+                { name: 'Insights / Blog', path: '/blog' }
+              ].map((link) => (
+                <li key={link.name}>
                   <Link 
-                    href={`/explore/${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                    href={link.path} 
                     className="text-white/60 hover:text-white transition-all duration-300 flex items-center justify-between group"
                   >
-                    <span className="font-bold uppercase tracking-widest text-[11px]">{item}</span>
+                    <span className="font-bold uppercase tracking-widest text-[11px]">{link.name}</span>
+                    <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-12">Product Specialization</h3>
+            <ul className="space-y-6">
+              {[
+                { name: 'Best T-Shirts Manufacturer', path: '/explore/t-shirts' }, 
+                { name: 'School Uniforms Supplier', path: '/explore/school-uniforms' }, 
+                { name: 'Corporate Uniforms India', path: '/explore/corporate-uniforms' }, 
+                { name: 'Safety Jackets Manufacturer', path: '/explore/safety-jackets' }, 
+                { name: 'Track Suits Manufacturer', path: '/explore/track-suits' }, 
+                { name: 'Aprons Manufacturer', path: '/explore/aprons' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link 
+                    href={item.path} 
+                    className="text-white/60 hover:text-white transition-all duration-300 flex items-center justify-between group"
+                  >
+                    <span className="font-bold uppercase tracking-widest text-[11px]">{item.name}</span>
                     <div className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </Link>
                 </li>
