@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Award, Zap, Ruler } from 'lucide-react';
+import Image from 'next/image';
 
 const QualitySection = () => {
   const points = [
@@ -49,8 +50,13 @@ const QualitySection = () => {
             className="relative"
           >
             <div className="aspect-square bg-light rounded-[3rem] relative overflow-hidden shadow-2xl">
-              {/* Replace with professional industrial manufacturing image */}
-              <div className="absolute inset-0 bg-primary/10"></div>
+              <Image 
+                src="/images/quality.png" 
+                alt="Kooltex Quality Assurance" 
+                fill 
+                className="object-cover" 
+              />
+              <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
             </div>
             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary rounded-3xl flex items-center justify-center p-8 text-white shadow-2xl">
               <div className="text-center">

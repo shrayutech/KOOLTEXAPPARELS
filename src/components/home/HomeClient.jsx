@@ -69,7 +69,7 @@ const HomeClient = () => {
             >
               <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative border-8 border-white">
                 <Image 
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000" 
+                  src="/images/manufacturing.png" 
                   alt="Kooltex Apparels Manufacturing" 
                   fill
                   className="object-cover"

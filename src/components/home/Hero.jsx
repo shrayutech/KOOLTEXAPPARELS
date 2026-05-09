@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const Hero = () => {
   const containerVariants = {
@@ -128,15 +129,13 @@ const Hero = () => {
 
               {/* Main Visual Container */}
               <div className="relative h-full w-full bg-white rounded-[4rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.12)] overflow-hidden border-8 border-white group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-50 group-hover:opacity-80 transition-opacity duration-700"></div>
-                <div className="w-full h-full flex flex-col items-center justify-center p-12 text-center">
-                  <span className="text-primary/10 font-black text-[12rem] select-none leading-none">
-                    K
-                  </span>
-                  <p className="text-dark/20 font-black uppercase tracking-[0.5em] text-xs mt-4">
-                    Kooltex Heritage
-                  </p>
-                </div>
+                <Image
+                  src="/images/hero.png"
+                  alt="Kooltex Premium Apparel"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               {/* Floating "Experience" Badge */}
