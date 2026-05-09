@@ -4,10 +4,11 @@
   --color-primary: #D32F2F;
   --color-primary-light: #FF5252;
   --color-primary-dark: #B71C1C;
-  --color-secondary: #121212;
+  --color-secondary: #0A0A0A;
   --color-accent: #FFFFFF;
   
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --font-heading: "Outfit", sans-serif;
 }
 
 @layer base {
@@ -15,21 +16,24 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white text-secondary font-sans antialiased;
+    @apply bg-white text-secondary font-sans antialiased selection:bg-primary selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight text-secondary;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-dark hover:shadow-lg active:scale-95;
+    @apply bg-primary text-white px-8 py-4 rounded-xl font-bold transition-all duration-500 hover:bg-primary-dark hover:shadow-[0_20px_40px_rgba(211,47,47,0.3)] hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
   }
   .btn-outline {
-    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-white active:scale-95;
+    @apply border-2 border-secondary/10 text-secondary px-8 py-4 rounded-xl font-bold transition-all duration-500 hover:bg-secondary hover:text-white hover:border-secondary hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-2;
   }
   .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
   }
   .section-padding {
-    @apply py-20 px-6 md:px-12 lg:px-24;
+    @apply py-24 px-6 md:px-12 lg:px-24;
   }
 }

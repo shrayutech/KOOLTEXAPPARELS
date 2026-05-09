@@ -1,37 +1,41 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import { Search, Filter, ShoppingBag, X } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Search, ShoppingBag, X, Filter } from 'lucide-react';
+import Image from 'next/image';
 
-const ProductGrid = () => {
+const ProductGrid = ({ initialCategory = "All" }) => {
+  const router = useRouter();
   const categories = [
     "All", "T-Shirts", "Track Suits", "School Uniforms", "Corporate Uniforms", "Safety Jackets", "Aprons"
   ];
-
+  
   const products = [
-    { id: 1, name: "Premium Cotton T-Shirt", category: "T-Shirts", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1974&auto=format&fit=crop" },
-    { id: 2, name: "Athletic Track Suit", category: "Track Suits", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop" },
-    { id: 3, name: "Secondary School Uniform", category: "School Uniforms", image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop" },
-    { id: 4, name: "Executive Business Suit", category: "Corporate Uniforms", image: "https://images.unsplash.com/photo-1591336397453-6a98da6287da?q=80&w=2070&auto=format&fit=crop" },
-    { id: 5, name: "Industrial Safety Vest", category: "Safety Jackets", image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2080&auto=format&fit=crop" },
-    { id: 6, name: "Professional Chef Apron", category: "Aprons", image: "https://images.unsplash.com/photo-1581615307205-1887e915474c?q=80&w=1935&auto=format&fit=crop" },
-    { id: 7, name: "Oversized Graphic Tee", category: "T-Shirts", image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=2070&auto=format&fit=crop" },
-    { id: 8, name: "Sports Training Pants", category: "Track Suits", image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=2080&auto=format&fit=crop" },
-    { id: 9, name: "Kindergarten Uniform Set", category: "School Uniforms", image: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=1974&auto=format&fit=crop" },
+    { id: 1, name: "Premium Cotton T-Shirt", category: "T-Shirts", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800" },
+    { id: 2, name: "Athletic Track Suit", category: "Track Suits", image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800" },
+    { id: 3, name: "Formal School Uniform", category: "School Uniforms", image: "https://images.unsplash.com/photo-1628554271148-3b61a97a8461?q=80&w=800" },
+    { id: 4, name: "Executive Blazer", category: "Corporate Uniforms", image: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=800" },
+    { id: 5, name: "High-Visibility Safety Vest", category: "Safety Jackets", image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=800" },
+    { id: 6, name: "Heavy Duty Kitchen Apron", category: "Aprons", image: "https://images.unsplash.com/photo-1595113316349-9fa4ee24f884?q=80&w=800" },
+    { id: 7, name: "V-Neck Corporate Tee", category: "T-Shirts", image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=800" },
+    { id: 8, name: "Winter Warm Track Suit", category: "Track Suits", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800" },
+    { id: 9, name: "Primary School Sweater", category: "School Uniforms", image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800" },
+    { id: 10, name: "Waterproof Safety Jacket", category: "Safety Jackets", image: "https://images.unsplash.com/photo-1582550943580-b0ac09312013?q=80&w=800" },
+    { id: 11, name: "Modern Barista Apron", category: "Aprons", image: "https://images.unsplash.com/photo-1516397281156-ca07cf9746fc?q=80&w=800" },
+    { id: 12, name: "Corporate Oxford Shirt", category: "Corporate Uniforms", image: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?q=80&w=800" },
   ];
 
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
-    if (location.state && location.state.category) {
-      setActiveCategory(location.state.category);
-      // Scroll to product grid if navigating from footer
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (initialCategory !== "All") {
+      setActiveCategory(initialCategory);
     }
-  }, [location.state]);
+  }, [initialCategory]);
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = activeCategory === "All" || product.category === activeCategory;
@@ -39,41 +43,51 @@ const ProductGrid = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const handleCategoryChange = (cat) => {
+    setActiveCategory(cat);
+    if (cat === "All") {
+      router.push('/explore');
+    } else {
+      router.push(`/explore/${cat.toLowerCase().replace(/\s+/g, '-')}`);
+    }
+  };
+
   return (
-    <div className="section-padding pt-32">
+    <div className="section-padding pt-12">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-          <div className="flex flex-wrap gap-3">
+        {/* Filters & Search */}
+        <div className="flex flex-col lg:flex-row justify-between items-center mb-16 gap-8">
+          <div className="flex flex-wrap justify-center gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                  activeCategory === cat 
-                    ? 'bg-primary text-white shadow-lg' 
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-                }`}
+                onClick={() => handleCategoryChange(cat)}
+                className={`px-6 py-2 rounded-full font-bold uppercase tracking-widest text-[10px] transition-all duration-300 ${activeCategory === cat
+                    ? 'bg-primary text-white shadow-xl scale-105'
+                    : 'bg-light text-secondary/40 hover:bg-steel/20 border border-steel/10'
+                  }`}
               >
                 {cat}
               </button>
             ))}
           </div>
 
-          <div className="relative w-full md:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input 
-              type="text" 
-              placeholder="Search products..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+          <div className="relative w-full lg:w-96">
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-steel" size={20} />
+            <input
+              type="text"
+              placeholder="Search Strategic Catalog..."
+              className="w-full pl-14 pr-6 py-4 rounded-2xl bg-light border border-steel/10 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
 
-        <motion.div 
+        {/* Product Grid */}
+        <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (
@@ -83,39 +97,41 @@ const ProductGrid = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100"
+                className="group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-steel/10"
               >
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary uppercase tracking-widest shadow-sm">
+                  <div className="absolute top-5 left-5">
+                    <span className="bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-black text-primary uppercase tracking-widest shadow-sm">
                       {product.category}
                     </span>
                   </div>
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Link to="/contact" className="bg-white text-secondary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300">
-                      <ShoppingBag size={18} />
-                      Inquire Now
-                    </Link>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-secondary group-hover:text-primary transition-colors mb-2">
-                    {product.name}
-                  </h3>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-500 text-sm font-medium">Bulk Only</span>
+                  <div className="absolute inset-0 bg-secondary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <button 
                       onClick={() => setSelectedProduct(product)}
-                      className="text-primary font-bold text-sm underline group-hover:no-underline cursor-pointer"
+                      className="bg-white text-secondary px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-all transform translate-y-4 group-hover:translate-y-0 duration-300 shadow-xl"
                     >
                       View Details
                     </button>
+                  </div>
+                </div>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-secondary group-hover:text-primary transition-colors mb-4 uppercase tracking-tight">
+                    {product.name}
+                  </h3>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate/40 text-[10px] font-black uppercase tracking-widest">Enterprise Ready</span>
+                    <Link
+                      href="/contact"
+                      className="text-primary font-black text-[10px] uppercase tracking-[0.2em] underline group-hover:no-underline"
+                    >
+                      Bulk Inquiry
+                    </Link>
                   </div>
                 </div>
               </motion.div>
@@ -123,75 +139,82 @@ const ProductGrid = () => {
           </AnimatePresence>
         </motion.div>
 
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <div className="text-center py-32 bg-light rounded-[3rem] border border-dashed border-steel/30">
+            <Search size={48} className="mx-auto text-steel mb-6" />
+            <h3 className="text-3xl font-bold text-secondary mb-2 uppercase tracking-tighter">No strategic assets found</h3>
+            <p className="text-slate/40 font-medium">Please refine your search parameters or select a different category.</p>
+          </div>
+        )}
+
         {/* Product Details Modal */}
         <AnimatePresence>
           {selectedProduct && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
-              <motion.div 
+            <div className="fixed inset-0 z-[1000] flex items-center justify-center p-6">
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProduct(null)}
-                className="absolute inset-0 bg-secondary/80 backdrop-blur-sm"
+                className="absolute inset-0 bg-secondary/90 backdrop-blur-md"
               ></motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative bg-white w-full max-w-4xl rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col md:flex-row"
+                className="relative bg-white w-full max-w-5xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row"
               >
-                <button 
+                <button
                   onClick={() => setSelectedProduct(null)}
-                  className="absolute top-6 right-6 z-10 w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white md:text-secondary md:bg-gray-100 md:hover:bg-gray-200 transition-all"
+                  className="absolute top-8 right-8 z-10 w-12 h-12 bg-light/50 hover:bg-light backdrop-blur-md rounded-full flex items-center justify-center text-secondary transition-all"
                 >
                   <X size={24} />
                 </button>
 
-                <div className="w-full md:w-1/2 h-64 md:h-auto">
-                  <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
+                <div className="w-full lg:w-1/2 h-80 lg:h-auto relative">
+                  <Image 
+                    src={selectedProduct.image} 
+                    alt={selectedProduct.name} 
+                    fill
+                    className="object-cover" 
+                  />
                 </div>
-                
-                <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                  <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4">{selectedProduct.category}</span>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6 text-secondary">{selectedProduct.name}</h2>
-                  <p className="text-gray-600 text-lg mb-8 leading-relaxed">
-                    Our premium {selectedProduct.name} is manufactured using high-quality materials to ensure maximum durability and comfort. Perfect for bulk organizational requirements.
+
+                <div className="w-full lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
+                  <span className="text-primary font-black uppercase tracking-[0.3em] text-[10px] mb-6">{selectedProduct.category} Unit</span>
+                  <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-secondary tracking-tighter uppercase">{selectedProduct.name}</h2>
+                  <p className="text-slate/60 text-lg mb-10 leading-relaxed font-medium">
+                    Our {selectedProduct.name} is engineered for professional durability and comfort. Utilizing premium industrial-grade materials, this product meets the highest standards for enterprise-scale requirements.
                   </p>
-                  
-                  <div className="space-y-4 mb-10">
-                    {['Custom Logo Branding', 'Available in multiple colors', 'Size range: S to 5XL', 'Premium fabric options'].map((item, i) => (
+
+                  <div className="grid grid-cols-2 gap-6 mb-12">
+                    {[
+                      'Strategic Customization', 
+                      'Industrial Durability', 
+                      'Bulk Scaling Ready', 
+                      'Eco-Compliant Fabric'
+                    ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
-                        </div>
-                        <span className="text-gray-700 font-medium">{item}</span>
+                        <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
+                        <span className="text-slate/60 font-bold text-xs uppercase tracking-widest">{item}</span>
                       </div>
                     ))}
                   </div>
 
-                  <Link 
-                    to="/contact" 
+                  <Link
+                    href="/contact"
                     onClick={() => setSelectedProduct(null)}
-                    className="btn-primary py-4 text-center flex items-center justify-center gap-3"
+                    className="btn-primary py-5 text-center flex items-center justify-center gap-4 text-lg"
                   >
-                    <ShoppingBag size={20} /> Inquire About Bulk Order
+                    <ShoppingBag size={24} /> Start Strategic Bulk Order
                   </Link>
                 </div>
               </motion.div>
             </div>
           )}
         </AnimatePresence>
-
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-20">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-400">
-              <Search size={40} />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">No products found</h3>
-            <p className="text-gray-500">Try adjusting your search or category filters.</p>
-          </div>
-        )}
       </div>
     </div>
   );

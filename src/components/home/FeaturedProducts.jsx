@@ -1,89 +1,85 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 
 const FeaturedProducts = () => {
   const products = [
     {
-      id: 1,
-      name: "Premium Corporate Polo",
-      category: "Corporate Uniforms",
-      image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1974&auto=format&fit=crop"
+      title: "Corporate Apparel",
+      category: "Professional Wear",
+      image: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=800",
+      desc: "Bespoke shirts and uniforms for modern corporate environments."
     },
     {
-      id: 2,
-      name: "High-Visibility Safety Jacket",
-      category: "Safety Wear",
-      image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2080&auto=format&fit=crop"
+      title: "Educational Uniforms",
+      category: "School Wear",
+      image: "https://images.unsplash.com/photo-1628554271148-3b61a97a8461?q=80&w=800",
+      desc: "Durable and high-quality school uniforms for every academic level."
     },
     {
-      id: 3,
-      name: "Classic School Uniform Set",
-      category: "School Uniforms",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      id: 4,
-      name: "Performance Track Suit",
-      category: "Sports Wear",
-      image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2040&auto=format&fit=crop"
+      title: "Safety & Industrial",
+      category: "Protection Gear",
+      image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=800",
+      desc: "High-visibility and protective apparel for industrial safety."
     }
   ];
 
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-white">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <h2 className="text-4xl font-bold mb-4">Featured Products</h2>
-            <div className="w-20 h-1.5 bg-primary mb-6"></div>
-            <p className="text-gray-600 text-lg">
-              Check out our latest collections and most popular manufacturing solutions for various industries.
+            <h3 className="text-primary font-black uppercase tracking-[0.4em] text-xs mb-6 px-4 py-1.5 bg-primary/10 inline-block rounded-full">Product Showcase</h3>
+            <h2 className="text-4xl md:text-5xl font-black text-dark mb-6 heading-dual">Enterprise Product <span>Range</span></h2>
+            <p className="text-body text-lg font-medium">
+              Explore our core specializations in bulk manufacturing for diverse industries.
             </p>
           </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link to="/explore" className="group flex items-center gap-2 text-primary font-bold hover:underline">
-              View All Products
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+          <Link href="/explore" className="btn-outline border-dark/10 text-dark hover:bg-dark hover:text-white py-4 px-10">
+            View All Categories <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {products.map((item, i) => (
             <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group cursor-pointer"
+              transition={{ delay: i * 0.1 }}
+              className="group bg-light rounded-[3rem] overflow-hidden border border-steel/20 hover:shadow-2xl transition-all duration-500"
             >
-              <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/5]">
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-700" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <Link to="/contact" className="w-full btn-primary text-sm py-2 text-center">
-                    Quick Inquiry
-                  </Link>
+                <div className="absolute top-8 left-8">
+                  <span className="bg-white/90 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-black text-primary uppercase tracking-[0.2em] shadow-lg">
+                    {item.category}
+                  </span>
                 </div>
               </div>
-              <span className="text-primary text-sm font-bold uppercase tracking-wider mb-2 block">{product.category}</span>
-              <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{product.name}</h3>
+              <div className="p-10">
+                <h3 className="text-2xl font-black text-dark mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+                <p className="text-body text-base mb-8 leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+                <Link href="/contact" className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-xs hover:gap-4 transition-all">
+                  Inquire Now <ChevronRight size={16} />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
