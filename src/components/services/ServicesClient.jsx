@@ -4,10 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { 
   ChevronRight, 
-  Settings, 
   Scissors, 
-  Truck, 
-  Award, 
   Building2, 
   GraduationCap, 
   HardHat, 

@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, ShoppingBag, X, Filter } from 'lucide-react';
+import { Search, ShoppingBag, X } from 'lucide-react';
 import Image from 'next/image';
 
 const ProductGrid = ({ initialCategory = "All" }) => {
@@ -27,15 +27,16 @@ const ProductGrid = ({ initialCategory = "All" }) => {
     { id: 12, name: "Corporate Oxford Shirt", category: "Corporate Uniforms", image: "https://images.unsplash.com/photo-1598033129183-c4f50c7176c8?q=80&w=800" },
   ];
 
+  const [prevInitialCategory, setPrevInitialCategory] = useState(initialCategory);
   const [activeCategory, setActiveCategory] = useState(initialCategory);
+
+  if (initialCategory !== prevInitialCategory) {
+    setPrevInitialCategory(initialCategory);
+    setActiveCategory(initialCategory);
+  }
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
-
-  useEffect(() => {
-    if (initialCategory !== "All") {
-      setActiveCategory(initialCategory);
-    }
-  }, [initialCategory]);
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = activeCategory === "All" || product.category === activeCategory;

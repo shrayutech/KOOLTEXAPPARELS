@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, Eye, ShieldCheck, History, Award, CheckCircle2 } from 'lucide-react';
+import { Target, Eye, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
 const AboutClient = () => {
